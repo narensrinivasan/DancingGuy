@@ -1,5 +1,8 @@
 import turtle
 import time
+from pydub import AudioSegment
+from pydub.playback import play
+
 
 window = turtle.Screen()
 window.title("Funny little dancing man look at him go")
@@ -19,13 +22,11 @@ def updateLeft() :
     guy.shape('guy_left.gif')
     time.sleep(0.1)
     guy.shape('guy_default.gif')
-    return
 
 def updateRight() :
     guy.shape('guy_right.gif')
     time.sleep(0.1)
     guy.shape('guy_default.gif')
-    return
 
 def updateUp() :
     for x in range(5):
@@ -34,13 +35,15 @@ def updateUp() :
         guy.shape('guy_up2.gif')
         time.sleep(0.02)
     guy.shape("guy_default.gif")
-    return
+
+song = AudioSegment.from_wav("C:/Users/nitna/OneDrive/Documents/GitHub/DancingGuy/vine_boom.wav")
 
 def updateDown() :
     guy.shape('guy_down.gif')
-    time.sleep(0.1)
+    play(song)
     guy.shape('guy_default.gif')
-    return
+    
+    
 
 window.onkeypress(updateLeft, "Left")
 window.onkeypress(updateRight, "Right")
